@@ -5,7 +5,6 @@ module ArithClient where
 
 import Control.Monad (void)
 import Control.Monad.IO.Class (liftIO)
---import Proto.Protos.Calcs (Arithmetic, CalcNumbers, CalcNumber)
 import Proto.Protos.Calcs
 import Proto.Protos.Calcs_Fields 
 import Network.GRPC.Client
@@ -17,7 +16,7 @@ import Network.GRPC.HTTP2.ProtoLens
 
 import Data.ProtoLens
 
--- create a simple CalcNumbers via lens operations
+-- create a simple CalcNumbers via lens operations for later use
 val1, val2, val3 :: CalcNumber
 val1 = defMessage & (code .~ 7)
 val2 = defMessage & (code .~ 77)
@@ -42,7 +41,7 @@ main = do
       let ofc = _outgoingFlowControl client
       liftIO $ _addCredit ifc 10000000
       _ <- _updateWindow ifc
-      reply <- open client "127.0.0.1:80" [] (Timeout 100) encoding decoding
+      reply <- open client "127.0.0.1" [] (Timeout 100) encoding decoding
         (singleRequest (RPC :: RPC Arithmetic "add") vals )
 
       liftIO $ print reply
