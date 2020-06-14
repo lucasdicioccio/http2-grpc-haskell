@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 0750af861e432a06ce8be50fe37d011ddb1c26490e8756b53d0d8685693d93c1
+-- hash: 59e86b4638bab931cb9948900fd08b2b735376fb44120e9889d1af96262ce663
 
 name:           examples
 version:        0.4.0.1
@@ -31,7 +31,6 @@ library
       ArithClient
       ArithServer
       Example
-      LensSandBox
       Proto.Protos.Calcs
       Proto.Protos.Calcs_Fields
       Proto.Protos.Grpcbin
