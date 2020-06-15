@@ -47,6 +47,5 @@ handleAdd _ input = do
 performAdd :: CalcNumbers -> CalcNumber
 performAdd nums = defMessage & code .~ total
   where
-    nums' = view values nums
-    total = sum (fmap (\l -> l ^. code) nums')
+    total = sum (toListOf (values . traverse . code) nums)
     
