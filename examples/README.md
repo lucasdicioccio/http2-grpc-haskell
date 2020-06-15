@@ -47,4 +47,4 @@ ArithClient.main
 ~~~
 
 The client sends a single request to the server, processes the response and terminates.
-Both Client and server should output some logging to show th
+Both client and server output a few log lines to show what is happening.
