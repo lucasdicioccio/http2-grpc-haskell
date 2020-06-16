@@ -27,6 +27,8 @@ Haddocks). Finally, serve `warp` over TLS`.
 
 Please refer to https://github.com/lucasdicioccio/warp-grpc-example for an example.
 
+TODO(ldicioccio): migrate this example to the new monorepo.
+
 ## Next steps
 
 * Helper to set metadatas (a.k.a., headers and trailers).

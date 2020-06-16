@@ -4,6 +4,7 @@
 {-# LANGUAGE UndecidableInstances #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE CPP #-}
 
 module Network.GRPC.HTTP2.ProtoLens where
 
@@ -15,6 +16,11 @@ import           Data.ProtoLens.Message (Message)
 import           Data.ProtoLens.Service.Types (Service(..), HasMethod, HasMethodImpl(..))
 import           Data.Proxy (Proxy(..))
 import           GHC.TypeLits (Symbol, symbolVal)
+
+#if MIN_VERSION_base(4,11,0)
+#else
+import Data.Monoid ((<>))
+#endif
 
 import Network.GRPC.HTTP2.Types
 import Network.GRPC.HTTP2.Encoding

@@ -2,6 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE GADTs             #-}
 {-# LANGUAGE FlexibleContexts  #-}
+{-# LANGUAGE CPP               #-}
 
 -- | Set of helpers helping with writing gRPC clients with not much exposure of
 -- the http2-client complexity.
@@ -25,6 +26,11 @@ import Data.Default.Class (def)
 import qualified Network.TLS as TLS
 import qualified Network.TLS.Extra.Cipher as TLS
 import Network.HPACK (HeaderList)
+
+#if MIN_VERSION_base(4,11,0)
+#else
+import Data.Monoid ((<>))
+#endif
 
 import Network.HTTP2.Client (ClientIO, ClientError, newHttp2FrameConnection, newHttp2Client, Http2Client(..), IncomingFlowControl(..), GoAwayHandler, FallBackFrameHandler, ignoreFallbackHandler, HostName, PortNumber, TooMuchConcurrency)
 import Network.HTTP2.Client.Helpers (ping)
@@ -97,6 +103,9 @@ tlsSettings True host port = Just $ TLS.ClientParams {
                                                }
         , TLS.clientSupported            = def { TLS.supportedCiphers = TLS.ciphersuite_default }
         , TLS.clientDebug                = def
+#if MIN_VERSION_tls(1,5,0)
+        , TLS.clientEarlyData            = Nothing
+#endif
         }
 
 

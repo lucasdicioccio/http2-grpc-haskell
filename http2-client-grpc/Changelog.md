@@ -2,7 +2,7 @@
 
 ## Unreleased changes
 
-## 0.8.0.0
+## 0.8.0.0
 
 Fork `http2-client-grpc` to drop dependency on `proto-lens`.
 

@@ -24,3 +24,5 @@ protoc  "--plugin=protoc-gen-haskell-protolens=${protolens}" \
 
 echo "# Generated modules:"
 find gen -name "*.hs" | sed -e 's/gen\///' | sed -e 's/\.hs$//' | tr '/' '.'
+
+mv gen examples/src

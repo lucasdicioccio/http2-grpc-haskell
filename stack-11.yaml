@@ -1,4 +1,4 @@
-resolver: lts-14.8
+resolver: lts-11.22
 packages:
 - http2-grpc-types
 - http2-grpc-proto-lens
@@ -8,3 +8,6 @@ packages:
 extra-deps:
 - proto3-wire-1.0.0
 - http2-client-0.9.0.0
+- proto-lens-0.5.1.0
+- async-2.2.2
+- lifted-async-0.10.0.4
